@@ -1,20 +1,25 @@
 import React, { useRef } from 'react';
 import Draggable from 'react-draggable';
 
-const Window = ({ title, children, onClose, zIndex, onClick }) => {
+// 👇 Yahan 'defaultPosition' prop add kiya
+const Window = ({ title, children, onClose, zIndex, onClick, defaultPosition }) => {
   const nodeRef = useRef(null);
 
   return (
-    <Draggable nodeRef={nodeRef} handle=".window-header" defaultPosition={{x: 0, y: 0}}>
-      {/* RESPONSIVE CSS LOGIC: 
-          - Mobile (Default): w-[90%] (Screen ka 90% lega)
-          - Laptop (md): w-[650px] (Fixed size rahega)
+    <Draggable 
+      nodeRef={nodeRef} 
+      handle=".window-header" 
+      // 👇 IMPORTANT: Agar position mili to wahan khulega, nahi to 0,0 pe
+      defaultPosition={defaultPosition || {x: 0, y: 0}}
+    >
+      {/* 👇 CSS Change: 'top-10 left-2' hata ke 'top-0 left-0' kiya hai.
+         Kyunki agar hum position control kar rahe hain, to CSS se offset nahi dena chahiye.
       */}
       <div 
         ref={nodeRef}
         onClick={onClick}
         style={{ zIndex: zIndex }}
-        className="absolute top-10 md:top-20 left-2 md:left-1/4 
+        className="absolute top-0 left-0 
                    w-[95%] h-[60%] md:w-[700px] md:h-[500px] 
                    bg-[#1e1e1e]/95 backdrop-blur-2xl border border-white/10 
                    rounded-xl shadow-2xl flex flex-col overflow-hidden animate-[pop_0.2s_ease-out]"

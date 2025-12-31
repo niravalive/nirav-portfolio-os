@@ -8,7 +8,7 @@ const apps = [
   { name: 'Safari', icon: 'https://parsefiles.back4app.com/JPaQcFfEEQ1ePBxbf6wvzkPMEqKYHhPYv8boI1Rc/a0b8d534889b5695781a9a03f388e2d4_low_res_Safari__MacOS_Tahoe_.png' },
   { name: 'Terminal', icon: 'https://parsefiles.back4app.com/JPaQcFfEEQ1ePBxbf6wvzkPMEqKYHhPYv8boI1Rc/4aef21aa2a547d46d3f4469fe42dea12_low_res_Terminal.png' },
   { name: 'Notes', icon: 'https://parsefiles.back4app.com/JPaQcFfEEQ1ePBxbf6wvzkPMEqKYHhPYv8boI1Rc/9b097d03bf6528496d8579a38917b76c_low_res_Notes.png' },
-  { name: 'Messages', icon: 'https://parsefiles.back4app.com/JPaQcFfEEQ1ePBxbf6wvzkPMEqKYHhPYv8boI1Rc/cee55f864899c6136b35c6e6839edbed_DFcwi8OtIU.png' },
+  { name: 'Messages', icon: 'https://parsefiles.back4app.com/JPaQcFfEEQ1ePBxbf6wvzkPMEqKYHhPYv8boI1Rc/bb5a4b5042f5dbd01baf9c1697460774_JQL8D8bMM2.png' },
   { name: 'Music', icon: 'https://parsefiles.back4app.com/JPaQcFfEEQ1ePBxbf6wvzkPMEqKYHhPYv8boI1Rc/43fc64dd49d0125e9b34d1d49204cafb_low_res_Music__MacOS_Tahoe_.png' },
   { name: 'Activity', icon: 'https://parsefiles.back4app.com/JPaQcFfEEQ1ePBxbf6wvzkPMEqKYHhPYv8boI1Rc/cd86d6c0730387a67de9a27ec6d727fa_12CLay7HdL.png' },
   { name: 'Trash', icon: 'https://parsefiles.back4app.com/JPaQcFfEEQ1ePBxbf6wvzkPMEqKYHhPYv8boI1Rc/c3be764d323d03b2ce9921be92216fca_yrypldfXBR.png' } 

@@ -24,7 +24,6 @@ const Safari = () => {
                 type="text"
                 value={url}
                 onChange={(e) => setUrl(e.target.value)}
-                // JAADU YAHAN HAI: Click karte hi Meme aayega
                 onFocus={() => setShowMeme(true)}
                 className="bg-[#e3e3e3] rounded-lg px-3 py-1 w-[80%] text-center text-xs font-medium text-black/70 outline-none focus:bg-white border border-transparent focus:border-blue-400 transition-all"
             />
@@ -47,7 +46,7 @@ const Safari = () => {
                     className="w-64 rounded-xl shadow-2xl mb-4"
                 />
                 <h2 className="text-white text-2xl font-bold">"Not happening, buddy."</h2>
-                <p className="text-gray-400 mt-2">Sirf Nirav ka portfolio dekhne ki permission hai.</p>
+                <p className="text-gray-400 mt-2">Go and Enjoy my portfolio.</p>
                 <button 
                     onClick={() => setShowMeme(false)}
                     className="mt-6 px-6 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-colors"
@@ -62,18 +61,27 @@ const Safari = () => {
             <div className="max-w-2xl text-center mt-10">
                 <h1 className="text-4xl font-bold text-gray-800 mb-4">Welcome to My Digital Space</h1>
                 <p className="text-gray-600 mb-8 text-lg">
-                    I build apps, hack systems (legally 😉), and create music.
+                    I build anything anytime anywhere.
                     <br /> Currently working on <span className="text-red-600 font-bold">RaktSetu</span>.
                 </p>
 
                 <div className="grid grid-cols-2 gap-6 mt-10 text-left">
-                    <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-all cursor-pointer hover:-translate-y-1">
+                    
+                    {/* TILE 1: RaktSetu (Clickable) */}
+                    <div 
+                        onClick={() => window.open('https://raktsetuin.netlify.app/', '_blank')} 
+                        className="bg-white p-6 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-all cursor-pointer hover:-translate-y-1"
+                    >
                         <div className="h-12 w-12 bg-red-100 rounded-full flex items-center justify-center text-2xl mb-4">🩸</div>
                         <h3 className="font-bold text-gray-800">RaktSetu</h3>
                         <p className="text-xs text-gray-500 mt-2">Connecting blood donors seamlessly.</p>
                     </div>
 
-                    <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-all cursor-pointer hover:-translate-y-1">
+                    {/* TILE 2: Music Production (Clickable) */}
+                    <div 
+                        onClick={() => window.open('https://open.spotify.com/artist/4cD1rxFZ6jzUExNlXizhcw?si=TWD3474USdWxtlUTX-qE-A', '_blank')} 
+                        className="bg-white p-6 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-all cursor-pointer hover:-translate-y-1"
+                    >
                         <div className="h-12 w-12 bg-purple-100 rounded-full flex items-center justify-center text-2xl mb-4">🎵</div>
                         <h3 className="font-bold text-gray-800">Music Production</h3>
                         <p className="text-xs text-gray-500 mt-2">Listen to "Fallen" & my latest beats.</p>

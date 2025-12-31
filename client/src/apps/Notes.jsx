@@ -6,7 +6,7 @@ const Notes = () => {
   // Tera Content Database
   const notesData = {
     resume: {
-      title: "My Resume",
+      title: "My Mini Resume",
       date: "Today",
       content: (
         <div className="space-y-4">
@@ -16,49 +16,23 @@ const Notes = () => {
           <div className="border-t border-white/10 pt-4">
             <h3 className="text-yellow-400 font-bold uppercase text-sm mb-2">Summary</h3>
             <p className="text-sm leading-relaxed text-gray-300">
-              Bold, curious, and future-focused developer. I explore, learn, and implement.
-              Currently focused on scaling applications and mastering Full Stack Development.
-              Also, a passionate musician (Stream 'Fallen' now!).
+              I explore, learn, and implement.
+              Currently focused on scaling projects and mastering Full Stack Development.
+              Also, a passionate musician and video editor.
             </p>
           </div>
 
           <div className="border-t border-white/10 pt-4">
             <h3 className="text-yellow-400 font-bold uppercase text-sm mb-2">Education</h3>
             <ul className="list-disc list-inside text-sm text-gray-300">
-              <li>Information & Network Security (Current)</li>
-              <li>Relevant Coursework: React, Node.js, Python</li>
+              <li>Computer Engeneering in Diploma (Current) at Bhagwan Mahavir Polytechnic.</li>
+              <li>Relevant Coursework: MERN (Full Stack), C++ (DSA)</li>
             </ul>
           </div>
         </div>
       )
     },
-    raktsetu: {
-      title: "Project: RaktSetu",
-      date: "Active",
-      content: (
-        <div className="space-y-4">
-          <h2 className="text-2xl font-bold text-[#B22222]">RaktSetu — A Bridge of Hope</h2>
-          <p className="text-gray-400 text-sm">Design Philosophy: Professional & Urgent</p>
-          
-          <div className="bg-[#333] p-3 rounded-lg border-l-4 border-[#B22222]">
-            <p className="text-white text-sm">
-              "Connecting blood donors with those in need seamlessly."
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 gap-2 mt-4">
-             <div className="bg-white/5 p-2 rounded text-center">
-                <span className="block text-xs text-gray-500">Primary Color</span>
-                <span className="text-[#B22222] font-bold">Deep Red</span>
-             </div>
-             <div className="bg-white/5 p-2 rounded text-center">
-                <span className="block text-xs text-gray-500">Status</span>
-                <span className="text-green-400 font-bold">In Development</span>
-             </div>
-          </div>
-        </div>
-      )
-    },
+   
     skills: {
       title: "Tech Stack",
       date: "Updated",
@@ -67,7 +41,7 @@ const Notes = () => {
            <div>
              <h3 className="text-blue-400 font-bold mb-2">Frontend</h3>
              <div className="flex flex-wrap gap-2">
-                {['React.js', 'Tailwind CSS', 'Framer Motion', 'Vite'].map(s => (
+                {['React.js', 'Tailwind CSS', 'CSS', 'HTML 5', 'Bootstrap CSS'].map(s => (
                     <span key={s} className="px-2 py-1 bg-blue-500/20 text-blue-300 rounded text-xs border border-blue-500/30">{s}</span>
                 ))}
              </div>
@@ -75,7 +49,7 @@ const Notes = () => {
            <div>
              <h3 className="text-green-400 font-bold mb-2">Backend</h3>
              <div className="flex flex-wrap gap-2">
-                {['Node.js', 'Express', 'MongoDB', 'REST APIs'].map(s => (
+                {['Node.js', 'Express', 'MongoDB','REST APIs', 'Python', 'C++'].map(s => (
                     <span key={s} className="px-2 py-1 bg-green-500/20 text-green-300 rounded text-xs border border-green-500/30">{s}</span>
                 ))}
              </div>

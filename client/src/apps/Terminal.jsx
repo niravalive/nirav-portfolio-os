@@ -27,7 +27,7 @@ const Terminal = () => {
       // Pehle user ka command history mein add karo
       const newHistory = [...history, { type: 'command', content: input }];
 
-      // Phir logic check karo (Tere Blueprint ke hisab se)
+      // Phir logic check karo
       switch (command) {
         case 'help':
           newHistory.push({ type: 'output', content: 'Available commands: about, skills, social, hobby, clear' });
@@ -36,10 +36,10 @@ const Terminal = () => {
           newHistory.push({ type: 'output', content: 'I am Nirav, a MERN Stack Developer from Surat. I love exploring new tech and building cool stuff.' });
           break;
         case 'skills':
-          newHistory.push({ type: 'output', content: 'Frontend: React, Tailwind, GSAP\nBackend: Node.js, Express, MongoDB\nTools: Git, Postman, Docker' });
+          newHistory.push({ type: 'output', content: 'Frontend: React, Tailwind, HTML/CSS\nBackend: Node.js, Express, MongoDB\nTools: Git, Firebase, Netlify/Vercel' });
           break;
         case 'social':
-          newHistory.push({ type: 'output', content: 'GitHub: github.com/nirav\nLinkedIn: linkedin.com/in/nirav\nInstagram: @nirav_music' });
+          newHistory.push({ type: 'output', content: 'GitHub: github.com/niravalive\nInstagram: @niravalive' });
           break;
         case 'hobby':
           newHistory.push({ type: 'output', content: 'Creating Music (Check out "Fallen"), Coding, Gaming (BGMI)' });
@@ -58,17 +58,24 @@ const Terminal = () => {
   };
 
   return (
-    <div className="h-full w-full bg-[#1e1e1e] text-green-400 font-mono text-sm p-2 overflow-auto" onClick={handleFocus}>
-      {/* Puran History Render Karna */}
+    <div className="h-full w-full bg-[#1e1e1e] font-mono text-sm p-4 overflow-auto" onClick={handleFocus}>
+      {/* History Render Karna */}
       {history.map((line, index) => (
-        <div key={index} className={`${line.type === 'error' ? 'text-red-400' : 'text-green-400'} mb-1 whitespace-pre-wrap`}>
+        <div 
+            key={index} 
+            className={`mb-1 whitespace-pre-wrap ${
+                line.type === 'error' ? 'text-red-400' : 
+                line.type === 'output' ? 'text-white' : // 👈 Yahan change kiya hai (Output ab White hoga)
+                'text-green-400' // Command Green rahega
+            }`}
+        >
           {line.type === 'command' ? `nirav@macbook ~ % ${line.content}` : line.content}
         </div>
       ))}
 
       {/* Input Area */}
       <div className="flex items-center">
-        <span className="mr-2 text-white">nirav@macbook ~ %</span>
+        <span className="mr-2 text-green-400">nirav@macbook ~ %</span>
         <input
           ref={inputRef}
           type="text"
@@ -79,7 +86,7 @@ const Terminal = () => {
           autoFocus
         />
       </div>
-      {/* Ye invisible div hamesha bottom mein rahega */}
+      {/* Invisible div for auto-scroll */}
       <div ref={bottomRef} />
     </div>
   );

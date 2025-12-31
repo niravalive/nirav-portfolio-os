@@ -1,100 +1,140 @@
 import React, { useState, useEffect } from 'react';
 
 const Activity = () => {
-  // Fake "Brain Usage" stats
-  const [brainLoad, setBrainLoad] = useState(65);
-  
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setBrainLoad(Math.floor(Math.random() * (90 - 60 + 1) + 60)); // 60-90% active range
-    }, 1500);
-    return () => clearInterval(timer);
-  }, []);
+  const [activeTab, setActiveTab] = useState('Frontend');
+  // Sirf ek simple trigger state animation start karne ke liye
+  const [animate, setAnimate] = useState(false);
 
-  // YAHAN TERI SKILLS HAIN
-  const skills = [
-    { name: "React.js", prof: "95%", exp: "2.5 Yrs", category: "Frontend" },
-    { name: "Tailwind CSS", prof: "98%", exp: "2 Yrs", category: "Design" },
-    { name: "Node.js (Backend)", prof: "85%", exp: "1.5 Yrs", category: "Backend" },
-    { name: "Express.js", prof: "88%", exp: "1.5 Yrs", category: "Backend" },
-    { name: "MongoDB", prof: "82%", exp: "1 Yr", category: "Database" },
-    { name: "Python", prof: "75%", exp: "3 Yrs", category: "Scripting" },
-    { name: "Video Editing", prof: "90%", exp: "4 Yrs", category: "Creative" },
-    { name: "Music Production", prof: "80%", exp: "2 Yrs", category: "Creative" },
-    { name: "Cybersecurity", prof: "60%", exp: "Learning", category: "Security" },
-  ];
+  // === 💾 SKILL DATA ===
+  const skillsData = {
+    Frontend: [
+      { name: "React.js", percent: 80, exp: "Learning" },
+      { name: "Tailwind CSS", percent: 90, exp: "Learning" },
+      { name: "JavaScript (ES6+)", percent: 85, exp: "Learning" },
+      { name: "Framer Motion", percent: 85, exp: "Learning" },
+      { name: "HTML5 / CSS3", percent: 95, exp: "2 Yrs" },
+    ],
+    Backend: [
+      { name: "Node.js", percent: 80, exp: "Learning" },
+      { name: "Express.js", percent: 80, exp: "Learning" },
+      { name: "MongoDB", percent: 85, exp: "Learning" },
+      { name: "Python", percent: 75, exp: "Learning" },
+      { name: "REST APIs", percent: 90, exp: "Learning" },
+    ],
+    Creative: [
+      { name: "Video Editing", percent: 99, exp: "3 Yrs" },
+      { name: "Music Production", percent: 80, exp: "Keep Going" },
+      { name: "Graphic Design", percent: 80, exp: "-" },
+      { name: "Cybersecurity", percent: 60, exp: "Learning" },
+    ]
+  };
+
+  const themes = {
+    Frontend: { 
+      text: 'text-blue-600', 
+      gradient: 'from-blue-600 to-cyan-400', 
+      shadow: 'hover:shadow-blue-200/50',
+      border: 'hover:border-blue-200'
+    },
+    Backend: { 
+      text: 'text-emerald-600', 
+      gradient: 'from-emerald-600 to-teal-400', 
+      shadow: 'hover:shadow-emerald-200/50',
+      border: 'hover:border-emerald-200'
+    },
+    Creative: { 
+      text: 'text-purple-600', 
+      gradient: 'from-purple-600 to-pink-500', 
+      shadow: 'hover:shadow-purple-200/50',
+      border: 'hover:border-purple-200'
+    },
+  };
+
+  const currentTheme = themes[activeTab];
+
+  // Logic: Jab Tab change ho, animate ko reset karo fir turant true karo
+  useEffect(() => {
+    setAnimate(false);
+    // 50ms ka micro-delay taaki React render kar sake (Smoothness hack)
+    const timer = setTimeout(() => setAnimate(true), 50);
+    return () => clearTimeout(timer);
+  }, [activeTab]);
 
   return (
-    <div className="h-full flex flex-col bg-[#1e1e1e] text-white w-full text-xs font-mono">
+    <div className="h-full flex flex-col bg-[#F5F5F7] w-full text-xs font-sans select-none overflow-hidden">
       
-      {/* Header Toolbar */}
-      <div className="h-10 bg-[#2d2d2d] border-b border-black flex items-center px-4 gap-4">
-        <div className="flex gap-1 bg-[#1e1e1e] p-1 rounded-md">
-            <button className="bg-gray-600 px-3 py-0.5 rounded text-white shadow-sm">Proficiency</button>
-            <button className="px-3 py-0.5 text-gray-400 hover:text-white">Experience</button>
+      {/* 1. Header & Pill Tabs */}
+      <div className="pt-6 pb-4 px-6 bg-[#F5F5F7] shrink-0 z-20">
+        <div className="flex items-center justify-between mb-4">
+            <h2 className="text-xl font-extrabold text-gray-900 tracking-tight">Skills & Stats</h2>
+            <span className={`px-2 py-0.5 rounded text-[10px] font-bold bg-white shadow-sm border border-gray-100 ${currentTheme.text}`}>
+              {skillsData[activeTab].length} Skills
+            </span>
         </div>
-        <div className="flex-grow"></div>
-        <div className="flex items-center gap-2">
-            <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-            <span className="text-gray-400">Status: Hired & Working</span>
+
+        {/* Pill Tabs */}
+        <div className="bg-gray-200/80 p-1 rounded-full flex relative shadow-inner">
+            {['Frontend', 'Backend', 'Creative'].map((tab) => (
+                <button 
+                    key={tab}
+                    onClick={() => setActiveTab(tab)}
+                    className={`flex-1 py-2 rounded-full text-[11px] font-bold transition-all duration-300 relative z-10 ${
+                        activeTab === tab 
+                        ? 'bg-white text-gray-900 shadow-md scale-100' 
+                        : 'text-gray-500 hover:text-gray-700 hover:bg-gray-200/50'
+                    }`}
+                >
+                    {tab}
+                </button>
+            ))}
         </div>
       </div>
 
-      {/* Graphs Area */}
-      <div className="h-28 bg-[#181818] border-b border-gray-700 flex p-4 gap-4">
-         {/* Graph 1: Brain Load */}
-         <div className="flex-1 bg-black/50 rounded border border-gray-700 p-2 flex flex-col justify-end relative overflow-hidden group">
-             <span className="absolute top-1 left-2 font-bold text-gray-500 group-hover:text-blue-400 transition-colors">Total Skill Capacity</span>
-             <span className="absolute top-1 right-2 font-bold text-blue-400 text-lg">{brainLoad}%</span>
-             
-             {/* Dynamic Bars */}
-             <div className="flex items-end gap-0.5 h-full pt-6 opacity-80">
-                {[...Array(30)].map((_, i) => (
-                    <div key={i} className="flex-1 bg-blue-500 rounded-t-sm transition-all duration-500" 
-                         style={{ height: `${Math.random() * brainLoad}%` }}></div>
-                ))}
-             </div>
-         </div>
-
-         {/* Graph 2: Experience Bar */}
-         <div className="flex-1 bg-black/50 rounded border border-gray-700 p-2 flex flex-col justify-center relative">
-             <span className="absolute top-1 left-2 font-bold text-gray-500">Learning Curve</span>
-             <div className="w-full flex items-center justify-between px-2 mt-2">
-                <span className="text-xs text-gray-400">Beginner</span>
-                <span className="text-xs text-green-400 font-bold">Pro</span>
-             </div>
-             <div className="w-full bg-gray-800 h-3 rounded-full mt-1 overflow-hidden">
-                <div className="bg-gradient-to-r from-blue-500 to-green-400 h-full rounded-full w-[85%] animate-[pulse_2s_infinite]"></div>
-             </div>
-         </div>
-      </div>
-
-      {/* Skills Table */}
-      <div className="flex-grow overflow-auto bg-[#1e1e1e]">
-        <table className="w-full text-left border-collapse">
-            <thead className="bg-[#2d2d2d] sticky top-0 z-10 shadow-sm">
-                <tr>
-                    <th className="py-1.5 px-4 font-normal text-gray-400 border-r border-gray-700">Skill Name</th>
-                    <th className="py-1.5 px-4 font-normal text-gray-400 border-r border-gray-700 w-24">% Prof.</th>
-                    <th className="py-1.5 px-4 font-normal text-gray-400 border-r border-gray-700 w-24">Experience</th>
-                    <th className="py-1.5 px-4 font-normal text-gray-400">Category</th>
-                </tr>
-            </thead>
-            <tbody>
-                {skills.map((skill, idx) => (
-                    <tr key={idx} className="hover:bg-[#007AFF]/30 cursor-default border-b border-gray-800 transition-colors">
-                        <td className="py-1.5 px-4 flex items-center gap-2">
-                             {/* Auto Icons based on category */}
-                            <span>{skill.category === 'Frontend' ? '🎨' : skill.category === 'Backend' ? '⚙️' : skill.category === 'Database' ? '🗄️' : '🧠'}</span>
+      {/* 2. Grid Content (Cards Stable Rahenge) */}
+      <div className="flex-grow px-6 pb-6 overflow-hidden">
+        {/* Removed 'animate-in slide-in' from grid */}
+        <div className="grid grid-cols-2 gap-4 h-full content-start">
+            
+            {skillsData[activeTab].map((skill, idx) => (
+                <div 
+                    key={idx}
+                    className={`group bg-white rounded-2xl p-4 shadow-[0_2px_8px_rgba(0,0,0,0.04)] border border-transparent transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${currentTheme.shadow} ${currentTheme.border}`}
+                >
+                    <div className="flex items-end justify-between mb-3">
+                        <h3 className="text-[13px] font-bold text-gray-700 tracking-tight leading-none group-hover:text-black transition-colors">
                             {skill.name}
-                        </td>
-                        <td className="py-1.5 px-4 font-bold text-green-400">{skill.prof}</td>
-                        <td className="py-1.5 px-4 text-gray-300">{skill.exp}</td>
-                        <td className="py-1.5 px-4 text-gray-500 italic">{skill.category}</td>
-                    </tr>
-                ))}
-            </tbody>
-        </table>
+                        </h3>
+                        <span className={`text-sm font-extrabold ${currentTheme.text} leading-none`}>
+                            {skill.percent}%
+                        </span>
+                    </div>
+
+                    {/* Progress Bar Container */}
+                    <div className="w-full h-2.5 bg-gray-100 rounded-full overflow-hidden relative mb-2 shadow-inner">
+                        {/* 👇 SMOOTH BAR LOGIC:
+                            - width 0 se start hoga.
+                            - 'duration-1000' (1 second) me fill hoga.
+                            - 'ease-out' natural feel dega.
+                        */}
+                        <div 
+                            style={{ width: animate ? `${skill.percent}%` : '0%' }} 
+                            className={`h-full rounded-full bg-gradient-to-r ${currentTheme.gradient} shadow-sm transition-all duration-1000 ease-out`}
+                        >
+                            {/* Subtle Shine */}
+                            <div className="w-full h-full bg-gradient-to-b from-white/20 to-transparent"></div>
+                        </div>
+                    </div>
+                    
+                    <div className="flex justify-between items-center mt-1">
+                       <span className="text-[9px] font-semibold text-gray-400 uppercase tracking-wider">Experience</span>
+                       <span className="text-[10px] font-bold text-gray-500 bg-gray-50 px-2 py-0.5 rounded-md group-hover:bg-gray-100 transition-colors border border-gray-100">
+                           {skill.exp}
+                       </span>
+                    </div>
+                </div>
+            ))}
+
+        </div>
       </div>
 
     </div>
