@@ -65,7 +65,7 @@ const MobileLayout = () => {
     <div className="fixed inset-0 bg-black flex items-center justify-center z-50 overflow-hidden">
       
       {/* === PHONE FRAME (85% Size) === */}
-      <div className="relative w-[90%] h-[85%] md:w-[375px] md:h-[800px] bg-black rounded-[50px] shadow-2xl border-[8px] border-[#1f1f1f] overflow-hidden ring-2 ring-white/10">
+      <div className="relative w-[88%] h-[90%] md:w-[375px] md:h-[800px] bg-black rounded-[50px] shadow-2xl border-[8px] border-[#1f1f1f] overflow-hidden ring-2 ring-white/10">
         
         {/* Dynamic Island (Notch) */}
         <div className="absolute top-4 left-1/2 -translate-x-1/2 w-28 h-7 bg-black rounded-full z-50 flex items-center justify-center pointer-events-none">
@@ -102,11 +102,11 @@ const MobileLayout = () => {
               // --- CASE 2: HOME SCREEN (Tera Original UI) ---
               <>
                  {/* Status Bar */}
-                 <div className="absolute top-4 w-full px-8 flex justify-between text-white text-[10px] font-bold z-10">
+                 <div className="absolute top-4 w-full px-8 flex justify-between text-white text-[14px] font-bold z-10">
                      <span>{new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
                      <div className="flex gap-1 items-center">
-                        <span className="text-[9px]">5G</span>
-                        <div className="w-4 h-2 border border-white rounded-[2px]"></div>
+                        <span className="text-[14px]">5G</span>
+                        <div className="w-7 h-3 border border-white rounded-[4px]"></div>
                      </div>
                  </div>
 

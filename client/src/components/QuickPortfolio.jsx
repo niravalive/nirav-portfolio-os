@@ -35,7 +35,7 @@ const QuickPortfolio = ({ onClose, onContact }) => {
                 {/* Left Side: Profile & Name */}
                 <div className="flex flex-col md:flex-row items-center gap-6">
                     <img 
-                        src="https://cdn.iconscout.com/icon/premium/png-512-thumb/man-icon-svg-download-png-8351129.png?f=webp&w=512" 
+                        src="../public/niravpf.png" 
                         className="w-28 h-28 rounded-full object-cover shadow-xl border-4 border-white"
                         alt="Profile"
                     />

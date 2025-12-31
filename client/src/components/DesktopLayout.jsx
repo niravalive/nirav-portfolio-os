@@ -63,7 +63,7 @@ const DesktopLayout = () => {
 
   return (
     <div className="h-screen w-screen bg-cover bg-center overflow-hidden flex flex-col relative animate-in fade-in duration-1000" 
-         style={{ backgroundImage: "url('https://wallpapershome.com/images/pages/pic_h/12000.jpg')" }}>
+         style={{ backgroundImage: "url('https://512pixels.net/wp-content/uploads/2025/06/11-0-Color-Night-thumbnails.jpg')" }}>
       
       <MenuBar />
 

@@ -7,14 +7,14 @@ const Finder = () => {
 
   // === 🖼️ ICONS DATA ===
   const sidebarIcons = {
-    recents: "./public/finderIcons/clock.png",
-    desktop: "./public/finderIcons/computer.png",
-    documents: "./public/finderIcons/folder.png",
-    downloads: "./public/finderIcons/download.png",
-    applications: "./public/finderIcons/app-store.png",
-    music: "./public/finderIcons/music-player.png",
-    icloud: "./public/finderIcons/icloud.png",
-    airdrop: "./public/finderIcons/airdrop.png",
+    recents: "/finderIcons/clock.png",
+    desktop: "/finderIcons/computer.png",
+    documents: "/finderIcons/folder.png",
+    downloads: "/finderIcons/download.png",
+    applications: "/finderIcons/app-store.png",
+    music: "/finderIcons/music-player.png",
+    icloud: "/finderIcons/icloud.png",
+    airdrop: "/finderIcons/airdrop.png",
   };
 
   const fileIcons = {

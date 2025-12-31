@@ -63,7 +63,7 @@ const Dock = ({ onAppClick }) => {
       <motion.div
         onMouseMove={(e) => mouseX.set(e.pageX)}
         onMouseLeave={() => mouseX.set(Infinity)}
-        className="mx-auto flex h-18 items-end gap-1 rounded-2xl bg-white/20 px-4 pb-1 backdrop-blur-2xl border border-white/20 pointer-events-auto shadow-2xl"
+        className="mx-auto flex h-18 items-end gap-1 rounded-3xl bg-white/20 px-4 pb-1 backdrop-blur-2xl border border-white/20 pointer-events-auto shadow-2xl"
       >
         {apps.map((app) => (
           <DockIcon 
